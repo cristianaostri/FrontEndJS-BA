@@ -180,6 +180,12 @@ main {
     flex-direction: row; 
     align-items: center;
     text-align: left;
+    &:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        transform: translateY(-5px);
+        transition: all 0.3s ease;
+        background-color: var(--color-primary);
+    }
 }
 .grid-item img {
     width: 100px; 
@@ -225,6 +231,7 @@ main {
         flex-wrap: wrap;
         gap: 5px; 
     }
+    
 
     .menu ul li a {
         font-size: var(--font-size-small);
