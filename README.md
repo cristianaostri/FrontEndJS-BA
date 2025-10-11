@@ -2,6 +2,28 @@
 
 Este proyecto es una aplicación web desarrollada con **JavaScript** y **React** que integra una base de datos para gestionar reservas deportivas. Permite a los usuarios autenticarse utilizando sus cuentas de Google o Facebook y reservar canchas de fútbol, pádel o pileta. Además, ofrece la posibilidad de pagar las reservas mediante Mercado Pago o código QR, brindando una experiencia moderna, segura e intuitiva.
 
+<p align="center">
+    <img src="https://img.icons8.com/color/96/000000/javascript.png" alt="JavaScript" height="64"/>
+    <img src="https://img.icons8.com/color/96/000000/react-native.png" alt="React" height="64"/>
+    <img src="https://img.icons8.com/color/96/000000/database.png" alt="Database" height="64"/>
+</p>
+
+---
+
+<p align="center">
+    <img src="https://img.icons8.com/color/48/000000/google-logo.png" alt="Google" title="Google Login"/>
+    <img src="https://img.icons8.com/color/48/000000/facebook-new.png" alt="Facebook" title="Facebook Login"/>
+    <img src="https://img.icons8.com/color/48/000000/football2.png" alt="Fútbol" title="Fútbol"/>
+    <img src="https://img.icons8.com/color/48/000000/tennis.png" alt="Pádel" title="Pádel"/>
+    <img src="https://img.icons8.com/color/48/000000/swimming-pool.png" alt="Pileta" title="Pileta"/>
+    <img src="https://img.icons8.com/color/48/000000/qr-code.png" alt="QR" title="Pago QR"/>
+    <img src="https://img.icons8.com/color/48/000000/mercado-pago.png" alt="Mercado Pago" title="Mercado Pago"/>
+</p>
+
+---
+
+> ¡Reserva tu cancha favorita de forma rápida y segura!
+
 ## Tecnologías utilizadas
 
 - **JavaScript (ES6+)**
