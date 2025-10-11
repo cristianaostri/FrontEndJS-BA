@@ -1,180 +1,339 @@
-*{
+/* ----------------------------------------------------- */
+/* 0. ROOT: Variables de Diseño                          */
+/* ----------------------------------------------------- */
+:root {
+    /* COLORES */
+    --color-primary: #0be016;              
+    --color-secondary: rgb(8, 31, 20);     
+    --color-text-light: #fff;              
+    --color-text-dark: #333;               
+    --color-background-card: #f0f0f0;      
+    
+    /* TIPOGRAFÍA */
+    --font-family-base: 'Poppins', sans-serif;
+    --font-size-base: 16px;
+    --font-size-large: 32px;               
+    --font-size-medium: 24px;              
+    --font-size-small: 14px;               
+
+    /* ESPACIADO */
+    --spacing-gap: 20px;
+    --spacing-large: 50px;
+    --header-padding-x: 100px;
+    --header-height: 400px;
+}
+
+/* ----------------------------------------------------- */
+/* 1. Estilos Generales y Reset                          */
+/* ----------------------------------------------------- */
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+    font-family: var(--font-family-base);
     text-decoration: none;
 }
 
-.logo{
-    
-    justify-content: end;
-    width: 150px;
-    margin: auto;
-    display: block;
-    margin-top: 10px ;
+body {
+    font-size: var(--font-size-base);
 }
 
-h6{
-    display: absolute;
-    font-size: 15px;
+main {
+    padding: var(--spacing-gap);
+    background-color: var(--color-secondary);
 }
-.menu .nav-links{
-    list-style: none;
-    display: flex;
-    gap: 20px;
-    margin-top: 50px;
-}
-.main-content{
+
+.aviso {
     text-align: center;
-    color: white;
-    margin-top: -50px;
-}
-.menu ul .login-button {
-    background-color: #fffcfc;
-    color: black;
-   
-    border-radius: 20px;
+    color: var(--color-text-light);
+    font-size: var(--spacing-gap);
+    margin-top: -20px;
+    margin-bottom: var(--spacing-gap);
     font-weight: 600;
-    transition: 0.3s ease;
-}
-header .header-container{ 
-    color: white;
-    background-color: rgb(129, 206, 40);
-}
-.header-container {
-    background-color: rgb(251, 26, 14);
-    color: white;
-    width: 100%;
-    height: 80px;
-    background-color: #0be016;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 100px;
-    top: 0;
 }
 
-.menu {
-    flex: 1;
+.main-content {
+    text-align: center;
+    color: var(--color-text-light);
+    /* Corrección: Se quitó el margin-top: 250px en línea */
+    margin-top: var(--spacing-large); 
+    padding-bottom: var(--spacing-large);
+}
+.main-content h1 { font-size: var(--font-size-large); }
+.main-content p { font-size: var(--font-size-base); }
+
+
+/* ----------------------------------------------------- */
+/* 2. Estilos del Header y Navegación                    */
+/* ----------------------------------------------------- */
+.header-container {
+    position: relative; 
+    color: var(--color-text-light);
+    width: 100%;
+    height: var(--header-height);
+    background-color: var(--color-secondary); 
     display: flex;
-    justify-content: center;
+    align-items: center; 
+    justify-content: space-between;
+    padding: 0 var(--header-padding-x);
+    overflow: hidden; 
+}
+
+/* Video de Fondo y Overlay */
+#bg-video, .header-container::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    z-index: 0;
+}
+.header-container::before {
+    content: "";
+    background-color: rgba(0, 0, 0, 0.5); 
+    z-index: 1;
+}
+
+/* --- LOGO (Pelota y Título) --- */
+.logo {
+    position: absolute;
+    bottom: 50px;
+    left: 50px;
+    width: 150px;
+    z-index: 3;
+    line-height: 1.2;
+}
+.logo h1 { font-size: var(--font-size-medium); }
+.logo h6 { font-size: var(--font-size-small); font-weight: 400; position: relative; }
+
+
+/* --- MENÚ DE NAVEGACIÓN (LINKS) --- */
+.menu {
+    position: absolute;
+    bottom: 30px; 
+    left: 220px; 
+    z-index: 3; 
+    display: flex;
+    justify-content: flex-start;
 }
 
 .menu ul {
     display: flex;
-    gap: 20px;
+    gap: var(--spacing-gap);
     list-style: none;
     align-items: center;
     margin: 0;
     padding: 0;
 }
 
-.login-button {
-    margin-left: auto;
-    background-color: #fffcfc;
-    color: black;
-    border-radius: 20px;
+.menu ul li a {
+    color: var(--color-text-light);
+    font-size: var(--font-size-medium);
     font-weight: 600;
-    transition: 0.3s ease;
-    padding: 8px 20px;
-    border: none;
-    cursor: pointer;
-} 
-main{
-    padding: 20px;
-    text-align: start;
-    background-color: rgb(8, 31, 20);
 }
+
+/* --- BOTÓN DE LOGIN/PERFIL (CORREGIDO) --- */
+.login-button {
+    position: absolute; 
+    height: 130px;
+    width: 100px;
+    top: var(--spacing-gap);
+    right: var(--header-padding-x); 
+    z-index: 3; 
+    
+    background-color: var(--color-text-light);
+    color: var(--color-text-dark);
+    border-radius: var(--spacing-gap);
+    padding: 10px 20px; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+.login-button a { color: var(--color-text-dark); margin-bottom: 5px; }
+.login-button svg { width: 50px; height: 50px; fill: var(--color-text-dark); margin-bottom: 1cqi; align-items: end; }
+.login-button p { font-size: var(--font-size-small); line-height: 1.2; top: -5px; }
+
+
+/* ----------------------------------------------------- */
+/* 3. Estilos de la Cuadrícula de Servicios (Grid)       */
+/* ----------------------------------------------------- */
 .grid-kind-sport {
     display: grid; 
-    /* 3 columnas de igual ancho para pantallas grandes */
-    grid-template-columns: 1fr 1fr ; 
-    grid-template-rows: auto; 
-    gap: 20px;
-    padding: 20px;
-    margin: 20px auto; /* Usar 'auto' para centrar el contenedor en la página */
-    max-width: 1200px; /* Opcional: Limita el ancho máximo para mejor lectura */
-    margin-top: 50px; /* Ajustamos este margen si el -50px causaba solapamiento */
-}
-
-.grid-kind-sport div {
-    display: flex;
-    flex-direction: row; /* Esto hace que el contenido interno vaya horizontal */
-    align-items: center;
-    justify-content: space-between;
-    text-align: left;
-}
-
-.grid-kind-sport img {
-    width: 100%; /* La imagen ocupa el 100% del ancho del contenedor del ítem */
-    height: 150px;
-    object-fit: cover;
-    border-radius: 10px;
-    margin-bottom: 15px;
-    margin-left: 0; /* Aseguramos que no haya margen izquierdo */
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-gap);
+    padding: var(--spacing-gap);
+    margin: var(--spacing-gap) auto; 
+    max-width: 1200px; 
+    margin-top: var(--spacing-large); 
 }
 
 .grid-item {
-    background-color: #f0f0f0;
+    background-color: var(--color-background-card); 
     border-radius: 10px;
-    padding: 20px;
-    text-align: center; /* Centramos el texto dentro del ítem */
+    padding: var(--spacing-gap);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    /* Aseguramos que el contenido fluya verticalmente (por defecto, pero explícito es mejor) */
-    display: block; 
-}
-
-.grid-item p {
-    padding: 25px;
-    margin-top: 10px;
-    font-size: 16px;
-    color: #333;
-}
-
-.grid-kind-sport div {
     display: flex;
-    flex-direction: row;
+    flex-direction: row; 
     align-items: center;
-    justify-content: space-between;
     text-align: left;
 }
-
-.grid-kind-sport div img {
-    /* ... estilos de la imagen que no ayudan al modo 'tarjeta' ... */
-    width: 150px; 
-    height: 150px;
-    
-    margin-bottom: 0;
+.grid-item img {
+    width: 100px; 
+    height: 100px;
+    margin-right: 15px;
     object-fit: cover;
     border-radius: 10px;
 }
-.grid-item img {
-    width: 100%; 
-    height: 180px; /* Alto fijo para uniformidad */
-    object-fit: cover;
-    border-radius: 8px;
-    margin-bottom: 15px;
+.grid-item p {
+    flex-grow: 1;
+    padding: 0; 
+    margin: 0;
+    font-size: var(--font-size-base);
+    color: var(--color-text-dark);
+    font-weight: bold;
 }
 
-p .aviso{
-    text-align: center;
-    color: white;
-    font-size: 20px;
-    margin-top: -20px;
-    margin-bottom: 20px;
-    font-weight: 600;}
-
-
+/* ----------------------------------------------------- */
+/* 4. Media Queries (Responsividad)                      */
+/* ----------------------------------------------------- */
 @media (max-width: 768px) {
-    .grid-kind-sport {
-        /* Una sola columna en pantallas pequeñas */
-        grid-template-columns: 1fr; 
-        gap: 30px; /* Aumentamos la separación vertical */
-    }
     
     .header-container {
-        /* Ajuste de padding en móvil para que el menú no se salga */
-        padding: 0 20px;
+        padding: 0 var(--spacing-gap);
+        height: 200px;
+    }
+    
+    .logo {
+        width: 100px;
+        bottom: 10px;
+        left: var(--spacing-gap);
+    }
+    
+    .menu {
+        bottom: 10px;
+        left: 130px;
+        width: calc(100% - 140px);
+        padding-left: 10px;
+    }
+
+    .menu ul {
+        flex-direction: row; 
+        flex-wrap: wrap;
+        gap: 5px; 
+    }
+
+    .menu ul li a {
+        font-size: var(--font-size-small);
+    }
+
+    .login-button {
+        top: 10px;
+        right: var(--spacing-gap);
+        padding: 5px 10px; 
+    }
+
+    .grid-kind-sport {
+        grid-template-columns: 1fr; 
+        gap: 30px;
+    }
+}
+
+/* ----------------------------------------------------- */
+/* 5. Estilos del Footer                                 */
+/* ----------------------------------------------------- */
+
+.footer-container {
+    background-color: var(--color-secondary); /* Fondo verde oscuro */
+    color: var(--color-text-light); /* Texto blanco */
+    padding-top: var(--spacing-large);
+    border-top: 3px solid var(--color-primary); /* Línea divisoria verde brillante */
+}
+
+.footer-content {
+    /* Usa Flexbox para la estructura de dos columnas */
+    display: flex;
+    justify-content: space-around;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-gap) var(--spacing-large);
+    flex-wrap: wrap; 
+}
+
+.footer-links, .footer-contact {
+    width: 45%; 
+    min-width: 280px; 
+    margin-bottom: var(--spacing-gap);
+}
+
+.footer-links h4, .footer-contact h4 {
+    font-size: var(--font-size-base);
+    color: var(--color-primary); 
+    margin-bottom: var(--spacing-gap);
+    font-weight: 700;
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links a, .footer-contact p {
+    color: var(--color-text-light);
+    font-size: var(--font-size-small);
+    line-height: 1.8;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: var(--color-primary); 
+}
+
+/* Redes Sociales */
+.social-media {
+    margin-top: var(--spacing-gap);
+}
+
+.social-media a {
+    color: var(--color-text-light);
+    font-size: var(--font-size-medium);
+    margin-right: 15px;
+    transition: color 0.3s ease;
+}
+
+.social-media a:hover {
+    color: var(--color-primary);
+}
+
+/* Barra de Derechos de Autor */
+.footer-bottom {
+    background-color: rgba(0, 0, 0, 0.1); 
+    text-align: center;
+    padding: 10px 0;
+    font-size: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--color-text-light);
+}
+
+/* ----------------------------------------------------- */
+/* 6. Media Queries (Responsividad del Footer)           */
+/* ----------------------------------------------------- */
+@media (max-width: 768px) {
+    .footer-content {
+        /* En móvil, apilamos las dos columnas (links y contacto) verticalmente */
+        flex-direction: column; 
+        padding: 0 var(--spacing-gap) var(--spacing-gap);
+    }
+
+    .footer-links, .footer-contact {
+        width: 100%; /* Ocupan todo el ancho */
+        text-align: center; /* Centramos el contenido */
+    }
+    
+    .footer-links ul {
+        text-align: center;
     }
 }
