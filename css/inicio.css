@@ -45,11 +45,19 @@ main {
 
 .aviso {
     text-align: center;
-    color: var(--color-text-light);
-    font-size: var(--spacing-gap);
-    margin-top: -20px;
-    margin-bottom: var(--spacing-gap);
-    font-weight: 600;
+    color: #3d690f; /* Texto blanco */
+    font-size: var(--font-size-base);
+    font-weight: 700; /* Lo hacemos más negrita */
+    
+    /* Fondo para destacar el aviso */
+    background-color: var(--color-primary); /* El verde brillante de tu paleta */
+    
+    /* Espaciado para que se vea como una barra de alerta */
+    padding: 15px 0; 
+    margin: 0; /* Aseguramos que no tenga márgenes que lo separen del footer/body */
+
+    /* La propiedad margin-top: -20px que tenías antes no es recomendable.
+       Con la nueva estructura, debería verse correctamente. */
 }
 
 .main-content {
@@ -185,6 +193,7 @@ main {
         transform: translateY(-5px);
         transition: all 0.3s ease;
         background-color: var(--color-primary);
+        cursor: pointer;
     }
 }
 .grid-item img {

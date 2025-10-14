@@ -58,6 +58,15 @@ body{
     margin-top: 15px;
 }
 
+#togglePassword{
+    position: absolute;
+    top: 80%;
+    right: 18px;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: #fff;
+    cursor: pointer;
+}
 .remember a{
     color: #fff;
     text-decoration: none;

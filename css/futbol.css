@@ -1,0 +1,282 @@
+/* ----------------------------------------------------- */
+/* 0. ROOT: Variables de Diseño                          */
+/* ----------------------------------------------------- */
+:root {
+    /* COLORES */
+    --color-primary: #0be016;              
+    --color-secondary: rgb(8, 31, 20);     
+    --color-text-light: #fff;              
+    --color-text-dark: #333;               
+    --color-background-card: #f0f0f0;      
+    --color-reserved: #5e242a;             /* Rojo claro para reservado */
+    
+    /* TIPOGRAFÍA */
+    --font-family-base: 'Poppins', sans-serif;
+    --font-size-base: 16px;
+    --font-size-large: 32px;               
+    --font-size-medium: 24px;              
+    --font-size-small: 14px;               
+
+    /* ESPACIADO */
+    --spacing-gap: 20px;
+    --spacing-large: 50px;
+    --header-padding-x: 100px;
+    --header-height: 400px;
+}
+
+/* ----------------------------------------------------- */ 
+/* 1. Estilos Generales y Reset                          */
+/* ----------------------------------------------------- */
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    background-image: url("https://i.postimg.cc/XvXx5DrW/cancha-Futbol.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+}
+
+
+
+/* ----------------------------------------------------- */
+/* ESTILOS DEL CALENDARIO DE RESERVAS 🗓️                 */
+/* ----------------------------------------------------- */
+
+.calendar-container {
+    background: rgba(255, 255, 255, 0.7); /* Blanco semitransparente */
+    border-radius: 16px;
+    padding: 32px;
+    max-width: 900px;
+    margin: 40px auto;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+}
+
+
+.calendar-header {
+    text-align: center;
+    margin-bottom: 30px;
+    color: var(--color-text-dark); /* Usamos color oscuro para el texto sobre fondo claro */
+}
+
+/* ⚠️ CONTENEDOR GRID PRINCIPAL */
+.calendar {
+    display: grid;
+    /* 8 columnas: 
+       - 80px para la etiqueta de la hora.
+       - 7 columnas iguales (1fr) para los días. */
+    grid-template-columns: 100px repeat(7, 1fr);
+    gap: 1px; /* Separación mínima entre celdas */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden; /* Limpia los bordes */
+}
+
+/* Encabezados de Día */
+.day-name, .empty-cell {
+    background-color: var(--color-secondary); /* Verde oscuro para el encabezado */
+    color: var(--color-text-light); /* Texto blanco */
+    padding: 10px 20px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 14px;
+    /* Hacemos que la celda vacía y los días ocupen la primera fila */
+    grid-row: 1; 
+}
+
+/* Etiquetas de Hora (Primera Columna) */
+.time-label {
+    background-color: #eee;
+    color: var(--color-text-dark);
+    padding: 10px 5px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px;
+    /* Aseguramos que la etiqueta de la hora ocupe la primera columna */
+    grid-column: 1; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Celdas de Disponibilidad (Time Slots) */
+.time-slot {
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    border: 1px solid #f0f0f0;
+    min-height: 40px; /* Altura mínima para cada celda de hora */
+}
+
+/* Estados de la Reserva */
+.time-slot.available {
+    background-color: #c8e6c9; /* Verde claro: Disponible */
+    color: #1b5e20;
+    font-weight: bold;
+    cursor:pointer
+}
+
+.time-slot.available:hover {
+    background-color: #a5d6a7; /* Verde más oscuro al pasar el mouse */
+}
+
+.time-slot.reserved {
+    background-color: #ffcdd2; /* Rojo claro: Reservado */
+    color: #b71c1c;
+    cursor: default;
+}
+
+.time-slot.reserved::after {
+    content: "RESERVADO";
+    font-size: 10px;
+    display: block;
+    margin-top: 5px;
+}
+
+.time-slot.selected {
+    background-color: #007bff; /* Azul */
+    color: white;
+    border-color: #0056b3;
+}
+
+.siguiente {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: var(--color-primary);
+    color: var(--color-text-dark);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+.time-slot.limit-reached {
+    cursor: not-allowed; /* Cambia el cursor para indicar que no se puede clicar */
+    opacity: 0.6; /* Se ve atenuado */
+}
+/* ----------------------------------------------------- */
+/* 4. MEDIA QUERY: RESPONSIVE (MÓVIL) - VISTA AGRUPADA POR HORA */
+/* ----------------------------------------------------- */
+@media (max-width: 768px) {
+    
+    .calendar-container {
+        max-width: 100%;
+        width: 100%;
+        margin: 30px 0; 
+        padding: 15px 5px; 
+        border-radius: 0;
+    }
+
+    /* 1. Desactivamos el Grid principal y usamos el modo de lista de bloques */
+    .calendar {
+        display: block; 
+        border: none;
+        min-width: 100%; 
+        overflow-x: hidden; 
+    }
+
+    /* 2. Ocultamos los encabezados de días */
+    .day-name, .empty-cell {
+        display: none; 
+    }
+    
+    /* 3. Estilo de las Etiquetas de Hora (Encabezados de Bloque) */
+    .time-label {
+        background-color: var(--color-secondary);
+        color: var(--color-text-light);
+        font-size: 1.2em;
+        padding: 10px 15px;
+        text-align: center; /* Centramos el texto de la hora */
+        
+        /* ✅ ESPACIADO MAYOR: Separamos los bloques de hora */
+        margin-top: 25px; 
+        margin-bottom: 5px; /* Pequeño margen inferior para separarlo de los slots */
+
+        width: 100%;
+    }
+    
+    /* 4. Estilo de las Celdas de Reserva (Slots individuales apilados) */
+    .time-slot {
+        width: 100%; 
+        
+        /* ✅ ESPACIADO MAYOR: Aumentamos el padding vertical para más altura */
+        padding: 12px 15px; 
+        
+        text-align: left;
+        border-bottom: 1px solid #ddd; /* Borde más visible */
+        background-color: #fff;
+        
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        
+        font-size: 14px;
+        margin: 0; /* Aseguramos que los slots estén pegados verticalmente */
+    }
+
+    /* 5. Inyectamos el Nombre del Día de la Semana */
+    .time-slot::before {
+        font-weight: bold;
+        color: var(--color-text-dark);
+        margin-right: 20px; /* ✅ MAYOR ESPACIO después del día */
+        min-width: 90px; /* Ancho fijo para alineación */
+    }
+    
+    /* Definiciones del contenido de los días (se mantienen) */
+    .time-slot[data-day="1"]::before { content: "Lunes"; }
+    .time-slot[data-day="2"]::before { content: "Martes"; }
+    .time-slot[data-day="3"]::before { content: "Miércoles"; }
+    .time-slot[data-day="4"]::before { content: "Jueves"; }
+    .time-slot[data-day="5"]::before { content: "Viernes"; }
+    .time-slot[data-day="6"]::before { content: "Sábado"; }
+    .time-slot[data-day="7"]::before { content: "Domingo"; }
+    
+    /* 6. Ajustamos los estados de color y visibilidad (Solución a la visibilidad) */
+    
+    /* Estado Disponible */
+    .time-slot.available {
+        background-color: #f7fff7;
+        color: var(--color-text-dark);
+        justify-content: flex-start; /* Alinea todo a la izquierda */
+    }
+    
+    /* Estado Reservado */
+   .time-slot.reserved {
+        font-family: 'Poppins', sans-serif;
+        background-color: var(--color-reserved);
+        color: #ffffff;
+        font-size: 20px;
+        /* Usamos 'display: block' o 'display: flex' para que ocupe el ancho */
+        display: block; 
+        
+        /* ✅ CLAVE PARA CENTRAR EL TEXTO INTERNO */
+        text-align: center; 
+        
+        /* Aseguramos que el div no tenga justificación flex que interfiera */
+        justify-content: center;
+        
+        padding: 12px 15px; /* Mantener el padding para altura */
+    }
+    
+    /* ✅ CLAVE: Ocultar el día de la semana en el estado RESERVADO */
+    .time-slot.reserved::before {
+        content: none; /* Eliminamos el contenido inyectado (Lunes |) */
+        margin-right: 0; 
+        min-width: 0;
+       
+    }
+    .time-slot.selected {
+    background-color: #007bff; /* Azul */
+    color: white;
+    border-color: #0056b3;
+}
+
+}
