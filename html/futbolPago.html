@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,15 +8,16 @@
     <link rel="stylesheet" href="../css/pagarFutbol.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
+
 <body>
 
     <div class="payment-container">
-        
+
         <div class="payment-details">
             <h2>Método de Pago</h2>
 
             <div class="payment-options">
-                
+
                 <label class="radio-option">
                     <input type="radio" name="payment_method" value="debito" id="radio-debito" checked>
                     <i class="fa-solid fa-credit-card"></i> Débito Automático
@@ -24,18 +26,19 @@
                 <label class="radio-option">
                     <input type="radio" name="payment_method" value="mp" id="radio-mp">
                     <i class="fa-solid fa-qrcode"></i> Mercado Pago
+                    <div id="walletBrick_container"></div>
                 </label>
             </div>
-            
+
             <div id="debito-form-container" class="form-container">
                 <h3>Datos de la Tarjeta</h3>
-                
+
                 <form id="debito-form">
                     <div class="input-group">
                         <label for="card-number">Número de Tarjeta</label>
                         <input type="text" id="card-number" placeholder="XXXX XXXX XXXX XXXX" required>
                     </div>
-                    
+
                     <div class="input-group">
                         <label for="card-name">Nombre en la Tarjeta</label>
                         <input type="text" id="card-name" placeholder="Nombre Apellido" required>
@@ -79,7 +82,29 @@
         </div>
 
     </div>
-
+    <script src="https://sdk.mercadopago.com/js/v2"></script>
     <script src="../js/pagarFutbol.js"></script>
+    <script>
+        // Configure sua chave pública do Mercado Pago
+        const publicKey = "YOUR_PUBLIC_KEY";
+        // Configure o ID de preferência que você deve receber do seu backend
+        const preferenceId = "YOUR_PREFERENCE_ID";
+
+        // Inicializa o SDK do Mercado Pago
+        const mp = new MercadoPago(publicKey);
+
+        // Cria o botão de pagamento
+        const bricksBuilder = mp.bricks();
+        const renderWalletBrick = async (bricksBuilder) => {
+            await bricksBuilder.create("wallet", "walletBrick_container", {
+                initialization: {
+                    preferenceId: "<PREFERENCE_ID>",
+                }
+            });
+        };
+
+        renderWalletBrick(bricksBuilder);
+    </script>
 </body>
+
 </html>

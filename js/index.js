@@ -43,6 +43,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (loginForm) {
         // Adjuntamos la función 'validar' al evento 'submit' del formulario
         loginForm.addEventListener("submit", validar);
+
     }
     
     function validar(event) {
@@ -54,8 +55,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Validación simple
         if (inputUser === usuarioSimulado && inputPass === contrasenaSimulada) {
-            alert("Inicio de sesión exitoso");
             // Redirige
+            
+            document.querySelector('.content').style.opacity = '0.5'; 
+            const loader = createLoaderHTML();
+            document.body.appendChild(loader);
+            // 2. Simular el tiempo de carga y luego redirigir
+            setTimeout(() => {
+                alert("Inicio de sesión exitoso"); 
+                window.location.href = "../html/inicio.html"; 
+                
+                // 3. Limpieza (Aunque la redirección ya lo hace, es buena práctica)
+                
+            }, 20000);
             window.location.href = "../html/inicio.html"; 
             
         } else {
@@ -63,3 +75,17 @@ document.addEventListener('DOMContentLoaded', function() {
         } 
     }
 });
+
+function createLoaderHTML() {
+        const overlay = document.createElement('div');
+        overlay.id = 'loading-overlay';
+        overlay.innerHTML = `
+            <div class="center-body">
+                <div class="loader-circle-9" style="color: white; font-size: 20px;">
+                    Loading
+                    <span style="display: block;"></span> 
+                    </div>
+            </div>
+        `;
+        return overlay;
+    }
