@@ -41,8 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return `$${amount.toLocaleString('es-AR', { minimumFractionDigits: 0 })}`;
     };
 
-    // ❌ Eliminar el contenido estático que no necesitamos (ej: el primer summary-item)
-    // Es mejor reconstruir toda la lista para evitar errores:
+   // Dependiendiendo si es una cancha o dos, se dará el hora en singular o plural
     const pluralText = CANTIDAD_SLOTS === 1 ? 'Hora' : 'Horarios';
     // Creamos un fragmento de HTML con los ítems dinámicos
     const reservationItemsHTML = reservations.map((reserva, index) => {
