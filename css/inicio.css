@@ -1,22 +1,17 @@
 /* ----------------------------------------------------- */
-/* 0. ROOT: Variables de Diseño                          */
+/* 0. ROOT: Variables de Diseño                          */
 /* ----------------------------------------------------- */
 :root {
-    /* COLORES */
-    --color-primary: #0be016;              
-    --color-secondary: rgb(8, 31, 20);     
-    --color-text-light: #fff;              
-    --color-text-dark: #333;               
-    --color-background-card: #f0f0f0;      
-    
-    /* TIPOGRAFÍA */
+    --color-primary: #0be016;
+    --color-secondary: rgb(8, 31, 20);
+    --color-text-light: #fff;
+    --color-text-dark: #333; 
+    --color-background-card: #f0f0f0; 
     --font-family-base: 'Poppins', sans-serif;
     --font-size-base: 16px;
-    --font-size-large: 32px;               
-    --font-size-medium: 24px;              
-    --font-size-small: 14px;               
-
-    /* ESPACIADO */
+    --font-size-large: 32px; 
+    --font-size-medium: 24px; 
+    --font-size-small: 14px; 
     --spacing-gap: 20px;
     --spacing-large: 50px;
     --header-padding-x: 100px;
@@ -24,7 +19,7 @@
 }
 
 /* ----------------------------------------------------- */
-/* 1. Estilos Generales y Reset                          */
+/* 1. Estilos Generales y Reset                          */
 /* ----------------------------------------------------- */
 * {
     margin: 0;
@@ -34,45 +29,39 @@
     text-decoration: none;
 }
 
-body {
-    font-size: var(--font-size-base);
-}
-
-main {
-    padding: var(--spacing-gap);
-    background-color: var(--color-secondary);
-}
+body { font-size: var(--font-size-base); }
+main { padding: var(--spacing-gap); background-color: var(--color-secondary); }
 
 .aviso {
     text-align: center;
-    color: #3d690f; /* Texto blanco */
+    color: #3d690f; 
     font-size: var(--font-size-base);
-    font-weight: 700; /* Lo hacemos más negrita */
-    
-    /* Fondo para destacar el aviso */
-    background-color: var(--color-primary); /* El verde brillante de tu paleta */
-    
-    /* Espaciado para que se vea como una barra de alerta */
+    font-weight: 700; 
+    background-color: var(--color-primary); 
     padding: 15px 0; 
-    margin: 0; /* Aseguramos que no tenga márgenes que lo separen del footer/body */
-
-    /* La propiedad margin-top: -20px que tenías antes no es recomendable.
-       Con la nueva estructura, debería verse correctamente. */
+    margin: 0; 
 }
 
 .main-content {
     text-align: center;
     color: var(--color-text-light);
-    /* Corrección: Se quitó el margin-top: 250px en línea */
     margin-top: var(--spacing-large); 
     padding-bottom: var(--spacing-large);
 }
 .main-content h1 { font-size: var(--font-size-large); }
 .main-content p { font-size: var(--font-size-base); }
 
+/* --- NUEVO TÍTULO DEL CLIMA --- */
+.weather-title {
+    text-align: center;
+    color: var(--color-text-light);
+    font-size: var(--font-size-medium);
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
 
 /* ----------------------------------------------------- */
-/* 2. Estilos del Header y Navegación                    */
+/* 2. Estilos del Header y Navegación                    */
 /* ----------------------------------------------------- */
 .header-container {
     position: relative; 
@@ -103,71 +92,16 @@ main {
     z-index: 1;
 }
 
-/* --- LOGO (Pelota y Título) --- */
-.logo {
-    position: absolute;
-    bottom: 50px;
-    left: 50px;
-    width: 150px;
-    z-index: 3;
-    line-height: 1.2;
-}
-.logo h1 { font-size: var(--font-size-medium); }
-.logo h6 { font-size: var(--font-size-small); font-weight: 400; position: relative; }
-
-
-/* --- MENÚ DE NAVEGACIÓN (LINKS) --- */
-.menu {
-    position: absolute;
-    bottom: 30px; 
-    left: 220px; 
-    z-index: 3; 
-    display: flex;
-    justify-content: flex-start;
-}
-
-.menu ul {
-    display: flex;
-    gap: var(--spacing-gap);
-    list-style: none;
-    align-items: center;
-    margin: 0;
-    padding: 0;
-}
-
-.menu ul li a {
-    color: var(--color-text-light);
-    font-size: var(--font-size-medium);
-    font-weight: 600;
-}
-
-/* --- BOTÓN DE LOGIN/PERFIL (CORREGIDO) --- */
-.login-button {
-    position: absolute; 
-    height: 130px;
-    width: 100px;
-    top: var(--spacing-gap);
-    right: var(--header-padding-x); 
-    z-index: 3; 
-    
-    background-color: var(--color-text-light);
-    color: var(--color-text-dark);
-    border-radius: var(--spacing-gap);
-    padding: 10px 20px; 
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-
-    display: flex; 
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-}
-.login-button a { color: var(--color-text-dark); margin-bottom: 5px; }
-.login-button svg { width: 50px; height: 50px; fill: var(--color-text-dark); margin-bottom: 1cqi; align-items: end; }
-.login-button p { font-size: var(--font-size-small); line-height: 1.2; top: -5px; }
+/* LOGO, MENU, LOGIN (Se mantienen) */
+.logo { position: absolute; bottom: 50px; left: 50px; width: 150px; z-index: 3; line-height: 1.2; }
+.menu { position: absolute; bottom: 30px; left: 220px; z-index: 3; display: flex; justify-content: flex-start; }
+.menu ul { display: flex; gap: var(--spacing-gap); list-style: none; align-items: center; margin: 0; padding: 0; }
+.menu ul li a { color: var(--color-text-light); font-size: var(--font-size-medium); font-weight: 600; }
+.login-button { position: absolute; height: 130px; width: 100px; top: var(--spacing-gap); right: var(--header-padding-x); z-index: 3; background-color: var(--color-text-light); color: var(--color-text-dark); border-radius: var(--spacing-gap); padding: 10px 20px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); display: flex; flex-direction: column; align-items: center; text-align: center; }
 
 
 /* ----------------------------------------------------- */
-/* 3. Estilos de la Cuadrícula de Servicios (Grid)       */
+/* 3. Estilos de la Cuadrícula de Servicios (Grid) (Se mantienen)       */
 /* ----------------------------------------------------- */
 .grid-kind-sport {
     display: grid; 
@@ -188,6 +122,7 @@ main {
     flex-direction: row; 
     align-items: center;
     text-align: left;
+    /* Usando la sintaxis & (necesita preprocesador o VS Code/SASS) - Asumiendo que es válido */
     &:hover {
         box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
         transform: translateY(-5px);
@@ -196,160 +131,320 @@ main {
         cursor: pointer;
     }
 }
-.grid-item img {
-    width: 100px; 
-    height: 100px;
-    margin-right: 15px;
-    object-fit: cover;
-    border-radius: 10px;
+.grid-item img { width: 100px; height: 100px; margin-right: 15px; object-fit: cover; border-radius: 10px; }
+.grid-item p { flex-grow: 1; padding: 0; margin: 0; font-size: var(--font-size-base); color: var(--color-text-dark); font-weight: bold; }
+
+
+/* ----------------------------------------------------- */
+/* 4. Estilos del WIDGET DEL CLIMA (CARD) */
+/* ----------------------------------------------------- */
+.card {
+    width: 90%; 
+    max-width: 450px; 
+    background-color: #37007a; 
+    color: #fff;
+    margin: 50px auto 0;
+    border-radius: 20px; 
+    padding: 40px 35px;
+    text-align: center;
+    position: relative; 
 }
-.grid-item p {
-    flex-grow: 1;
-    padding: 0; 
-    margin: 0;
-    font-size: var(--font-size-base);
-    color: var(--color-text-dark);
+
+/* Botón de Refrescar (Nuevo) */
+.refresh-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer;
+    transition: transform 0.3s;
+    z-index: 10;
+}
+.refresh-btn:hover {
+    transform: rotate(180deg);
+}
+
+/* Search Bar (Dos inputs y botón) */
+.search-bar {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap; 
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px; 
+}
+
+.search-bar input {
+    flex: 1 1 40%; 
+    border: 0;
+    outline: 0;
+    background-color: #ebfffc;
+    color: #555;
+    padding: 10px 15px;
+    height: 45px; 
+    border-radius: 20px; 
+    margin-right: 10px;
+    font-size: 16px;
+    min-width: 100px;
+}
+
+.search-bar button {
+    border: 0;
+    outline: 0;
+    background-color: #ebfffc;
+    border-radius: 50%;
+    width: 45px; 
+    height: 45px; 
+    cursor: pointer;
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0; 
+}
+
+.search-bar button img { width: 16px; }
+
+/* Estilos de Resultados del Clima */
+.weather {
+    /* El JS lo controlará */
+}
+
+.weather-icon{ width: 120px; margin-top: 20px; }
+.weather h1{ font-size: 60px; font-weight: 500; }
+.weather h2{ font-size: 30px; font-weight: 500; margin-top: -5px; }
+
+
+/* Detalles (Humedad, Viento, Precipitación) */
+.details {
+    display: flex;
+    align-items: center;
+    justify-content: space-around; 
+    padding: 0 10px;
+    margin-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding-top: 20px;
+}
+
+.col {
+    flex-basis: 30%; 
+    display: flex;
+    align-items: center;
+    text-align: left;
+}
+
+.col img{ width: 30px; margin-right: 8px; }
+.humidity, .wind, .precipitation { font-size: 18px; margin-top: -6px; font-weight: bold; }
+
+.error {
+    text-align: center;
+    margin-top: 10px;
+    padding: 5px;
+    background-color: #ffdddd;
+    color: #d8000c;
+    border-radius: 5px;
     font-weight: bold;
 }
 
-/* ----------------------------------------------------- */
-/* 4. Media Queries (Responsividad)                      */
-/* ----------------------------------------------------- */
-@media (max-width: 768px) {
-    
-    .header-container {
-        padding: 0 var(--spacing-gap);
-        height: 200px;
-    }
-    
-    .logo {
-        width: 100px;
-        bottom: 10px;
-        left: var(--spacing-gap);
-    }
-    
-    .menu {
-        bottom: 10px;
-        left: 130px;
-        width: calc(100% - 140px);
-        padding-left: 10px;
-    }
-
-    .menu ul {
-        flex-direction: row; 
-        flex-wrap: wrap;
-        gap: 5px; 
-    }
-    
-
-    .menu ul li a {
-        font-size: var(--font-size-small);
-    }
-
-    .login-button {
-        top: 10px;
-        right: var(--spacing-gap);
-        padding: 5px 10px; 
-    }
-
-    .grid-kind-sport {
-        grid-template-columns: 1fr; 
-        gap: 30px;
-    }
-}
-
-/* ----------------------------------------------------- */
 /* 5. Estilos del Footer                                 */
+
 /* ----------------------------------------------------- */
+
+
 
 .footer-container {
+
     background-color: var(--color-secondary); /* Fondo verde oscuro */
+
     color: var(--color-text-light); /* Texto blanco */
+
     padding-top: var(--spacing-large);
+
     border-top: 3px solid var(--color-primary); /* Línea divisoria verde brillante */
+
 }
+
+
 
 .footer-content {
+
     /* Usa Flexbox para la estructura de dos columnas */
+
     display: flex;
+
     justify-content: space-around;
+
     max-width: 1200px;
+
     margin: 0 auto;
+
     padding: 0 var(--spacing-gap) var(--spacing-large);
-    flex-wrap: wrap; 
+
+    flex-wrap: wrap;
+
 }
+
+
 
 .footer-links, .footer-contact {
-    width: 45%; 
-    min-width: 280px; 
+
+    width: 45%;
+
+    min-width: 280px;
+
     margin-bottom: var(--spacing-gap);
+
 }
+
+
 
 .footer-links h4, .footer-contact h4 {
+
     font-size: var(--font-size-base);
-    color: var(--color-primary); 
+
+    color: var(--color-primary);
+
     margin-bottom: var(--spacing-gap);
+
     font-weight: 700;
+
 }
+
+
 
 .footer-links ul {
+
     list-style: none;
+
     padding: 0;
+
 }
+
+
 
 .footer-links a, .footer-contact p {
+
     color: var(--color-text-light);
+
     font-size: var(--font-size-small);
+
     line-height: 1.8;
+
     transition: color 0.3s ease;
+
 }
+
+
 
 .footer-links a:hover {
-    color: var(--color-primary); 
+
+    color: var(--color-primary);
+
 }
+
+
 
 /* Redes Sociales */
+
 .social-media {
+
     margin-top: var(--spacing-gap);
+
 }
+
+
 
 .social-media a {
+
     color: var(--color-text-light);
+
     font-size: var(--font-size-medium);
+
     margin-right: 15px;
+
     transition: color 0.3s ease;
+
 }
+
+
 
 .social-media a:hover {
+
     color: var(--color-primary);
+
 }
+
+
 
 /* Barra de Derechos de Autor */
+
 .footer-bottom {
-    background-color: rgba(0, 0, 0, 0.1); 
+
+    background-color: rgba(0, 0, 0, 0.1);
+
     text-align: center;
+
     padding: 10px 0;
+
     font-size: 12px;
+
     border-top: 1px solid rgba(255, 255, 255, 0.1);
+
     color: var(--color-text-light);
+
 }
 
+
 /* ----------------------------------------------------- */
-/* 6. Media Queries (Responsividad del Footer)           */
+/* 7. Media Queries (Responsividad)                      */
 /* ----------------------------------------------------- */
 @media (max-width: 768px) {
-    .footer-content {
-        /* En móvil, apilamos las dos columnas (links y contacto) verticalmente */
-        flex-direction: column; 
-        padding: 0 var(--spacing-gap) var(--spacing-gap);
-    }
-
-    .footer-links, .footer-contact {
-        width: 100%; /* Ocupan todo el ancho */
-        text-align: center; /* Centramos el contenido */
+    /* Header */
+    .header-container { height: 180px; padding: 0 var(--spacing-gap); }
+    .logo { left: 10px; }
+    .login-button { right: 10px; }
+    .menu { left: 130px; }
+    
+    /* Grid de Servicios */
+    .grid-kind-sport {
+        grid-template-columns: 1fr; 
+        gap: 15px;
     }
     
-    .footer-links ul {
-        text-align: center;
+    /* Card de Clima (Para apilar inputs) */
+    .search-bar {
+        flex-direction: column; 
+    }
+    .search-bar input {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+    .search-bar button {
+        margin-top: 10px;
+        width: 100%;
+        border-radius: 8px;
+        height: 40px;
+    }
+    
+    /* Detalles del Clima (Para mejorar la visibilidad de los 3 datos) */
+    .details {
+        flex-wrap: wrap; 
+        justify-content: space-around;
+    }
+    .details .col {
+        flex-basis: 45%; 
+        margin-bottom: 15px;
+    }
+
+    /* Footer */
+    .footer-content {
+        flex-direction: column; 
+    }
+    .footer-links, .footer-contact {
+        width: 100%; 
+        text-align: center; 
     }
 }
