@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         try {
             // --- 1. GEOCODIFICACIÓN (Obtener Latitud y Longitud) ---
-            const geoApiUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${fullQuery}&limit=1&appid=${apikey}`;
+            const geoApiUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${fullQuery}&limit=1&appid=${apikey}`;
             const geoResponse = await fetch(geoApiUrl);
             const geoData = await geoResponse.json();
 

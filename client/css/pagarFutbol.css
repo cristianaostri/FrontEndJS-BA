@@ -183,7 +183,62 @@ body {
     margin-top: 10px;
     opacity: 0.8;
 }
+/* Estilos para el Header y la Flecha */
+.payment-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
 
+.back-arrow {
+    font-size: 20px;
+    cursor: pointer;
+    color: #333;
+    padding: 8px;
+    border-radius: 50%;
+    transition: background 0.3s;
+}
+
+.back-arrow:hover {
+    background-color: #eee;
+}
+
+/* Estilos de las opciones (Radio Buttons) */
+.payment-options {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.radio-option {
+    flex: 1;
+    border: 1px solid #ccc;
+    padding: 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s;
+}
+
+.radio-option:hover {
+    border-color: #0be016; /* Tu verde */
+    background-color: #f9fff9;
+}
+
+.radio-option input {
+    accent-color: #0be016;
+}
+
+/* Ocultar/Mostrar contenedores */
+.form-container {
+    margin-top: 20px;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 8px;
+}
 /* ----------------------------------- */
 /* Responsive Design (Móviles) */
 /* ----------------------------------- */

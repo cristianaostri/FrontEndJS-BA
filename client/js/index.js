@@ -63,12 +63,12 @@ document.addEventListener('DOMContentLoaded', function() {
             // 2. Simular el tiempo de carga y luego redirigir
             setTimeout(() => {
                 alert("Inicio de sesión exitoso"); 
-                window.location.href = "../html/inicio.html"; 
+                window.location.href = "../js/index.js"; 
                 
                 // 3. Limpieza (Aunque la redirección ya lo hace, es buena práctica)
                 
             }, 20000);
-            window.location.href = "../html/inicio.html"; 
+            window.location.href = "../../client/html/inicio.html"; 
             
         } else {
             alert("Usuario o contraseña incorrectos");

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complejo Q - Finalizar Reserva</title>
+    <link rel="stylesheet" href="../css/pagarFutbol.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <script src="https://sdk.mercadopago.com/js/v2"></script>
+</head>
+
+<body>
+
+    <div class="payment-container">
+
+        <div class="payment-details">
+            
+            <div class="payment-header">
+                <i id="back-btn" class="fa-solid fa-arrow-left back-arrow" style="display: none;"></i>
+                <h2>Método de Pago</h2>
+            </div>
+
+            <div id="selection-container">
+                <p class="instruction-text">Seleccioná cómo querés abonar tu reserva.</p>
+                
+                <div class="payment-options">
+                    <label class="radio-option">
+                        <input type="radio" name="payment_method" value="debito" id="radio-debito" checked>
+                        <span><i class="fa-solid fa-credit-card"></i> Débito / Crédito</span>
+                    </label>
+
+                    <label class="radio-option">
+                        <input type="radio" name="payment_method" value="mp" id="radio-mp">
+                        <span><i class="fa-solid fa-qrcode"></i> Mercado Pago</span>
+                    </label>
+                </div>
+
+                <div id="debito-form-container" class="form-container">
+                    <h3>Datos de la Tarjeta</h3>
+                    <form id="debito-form">
+                        <div class="input-group">
+                            <label>Número de Tarjeta</label>
+                            <input type="text" placeholder="XXXX XXXX XXXX XXXX">
+                        </div>
+                        <div class="form-row">
+                            <div class="input-group">
+                                <label>Vencimiento</label>
+                                <input type="text" placeholder="MM/AA">
+                            </div>
+                            <div class="input-group">
+                                <label>CVV</label>
+                                <input type="text" placeholder="123">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div id="mp-brick-container" style="display: none;">
+                <div id="walletBrick_container"></div>
+                <div id="loading-message" style="display: none; text-align: center;">
+                    <i class="fa-solid fa-spinner fa-spin"></i> Generando orden...
+                </div>
+            </div>
+
+            <button id="main-action-btn" class="btn-next">
+                Pagar con Tarjeta
+            </button>
+
+            <p class="security-note"> 
+                <i class="fa-solid fa-shield-halved"></i> Tus datos están protegidos.
+            </p>
+
+        </div>
+
+        <div class="order-summary">
+            <h2>Resumen del Pedido</h2>
+            <div class="summary-divider"></div> <div class="summary-total">
+                <span class="total-label">Total a Pagar</span>
+                <span id="final-total" class="total-amount">$0</span>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="../js/pagarFutbol.js"></script>
+</body>
+
+</html>
