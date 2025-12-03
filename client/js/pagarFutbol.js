@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- CONFIGURACIÓN ---
     const PRECIO_UNITARIO = 30000;
-    const SERVER_URL = "backend-cursojs-production.up.railway.app"; 
+    const SERVER_URL = "https://backend-cursojs-production.up.railway.app"; 
     // TU PUBLIC KEY DE VENDEDOR
     const PUBLIC_KEY = "APP_USR-e9d2f9d6-6ca7-4aea-8dbe-758ea522b4e2"; 
 
