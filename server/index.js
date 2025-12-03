@@ -33,9 +33,9 @@ app.post("/create_preference", async (req, res) => {
                 },
             ],
             back_urls: {
-                success: "https://cristianaostrilopez.netlify.app/pago_exitoso",
-                failure: "https://cristianaostrilopez.netlify.app/pago_fallido",
-                pending: "https://cristianaostrilopez.netlify.app/pago_pendiente",
+                success: "https://polideportivoba.netlify.app/html/inicio.html",
+                failure: "https://polideportivoba.netlify.app/html/inicio.html",
+                pending: "https://polideportivoba.netlify.app/html/inicio.html",
             },
             auto_return: "approved",
         };

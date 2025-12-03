@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 // 3. Limpieza (Aunque la redirección ya lo hace, es buena práctica)
                 
             }, 20000);
-            window.location.href = "/html/inicio.html";
+            window.location.href = "/html/inicio.html"; 
             
         } else {
             alert("Usuario o contraseña incorrectos");
